@@ -3,22 +3,13 @@ using Facade.Impl.Repositories;
 using Facade.Impl.UoW;
 using Facade.Repositories;
 using Facade.UoW;
-using System;
-using System.Linq;
-using System.Reflection;
 
 namespace AutofacStackoverflowException.IoC
 {
-    public class AppModule : Autofac.Module
+    public class AppModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            //builder.RegisterAssemblyTypes(typeof(UnitOfWork).GetTypeInfo().Assembly)
-            //    .Where(t => t.Name.EndsWith("Repository", StringComparison.Ordinal))
-            //    .As(t => t.GetInterfaces().Single(i => i.Name.EndsWith(t.Name)))
-            //    .InstancePerLifetimeScope()
-            //    .PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
-
             builder.RegisterType<TicketsRepository>()
                 .As<ITicketsRepository>()
                 .InstancePerLifetimeScope()
